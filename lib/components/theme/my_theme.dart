@@ -15,6 +15,11 @@ class MyTheme {
         statusBarIconBrightness: Brightness.dark,
       ),
       centerTitle: true,
+      titleTextStyle: TextStyle(
+        color: Colors.black,
+        fontSize: 15,
+        fontWeight: FontWeight.bold,
+      ),
     ),
   );
 }

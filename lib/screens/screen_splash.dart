@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:temperature_units/screens/screen_unit_calculator.dart';
 import 'package:temperature_units/utilities/all_text.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -8,20 +9,36 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMixin{
+class _SplashScreenState extends State<SplashScreen>
+    with TickerProviderStateMixin {
   late AnimationController controller;
+
   @override
   void initState() {
     controller = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 3),
     )..addListener(() {
-      setState(() {});
-    });
+        setState(() {});
+      });
     controller.repeat(reverse: false);
+
+    Future.delayed(const Duration(seconds: 3), () {
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (builder) => const UnitCalculator(),
+        ),
+      );
+    });
+
     super.initState();
   }
 
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,36 +65,34 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
                   fontSize: 20,
                 ),
               ),
-
             ],
           ),
           Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Icon(
-                      Icons.scale_outlined,
-                      size: 50,
-                    ),
-                    Icon(
-                      Icons.linear_scale_outlined,
-                      size: 50,
-                    ),
-                    Icon(
-                      Icons.device_thermostat_outlined,
-                      size: 50,
-                    ),
-                  ],
-                ),
-                const Icon(
-                  Icons.analytics_outlined,
-                  size: 50,
-                ),
-
-              ],
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  Icon(
+                    Icons.scale_outlined,
+                    size: 50,
+                  ),
+                  Icon(
+                    Icons.linear_scale_outlined,
+                    size: 50,
+                  ),
+                  Icon(
+                    Icons.device_thermostat_outlined,
+                    size: 50,
+                  ),
+                ],
+              ),
+              const Icon(
+                Icons.analytics_outlined,
+                size: 50,
+              ),
+            ],
           ),
           SizedBox(
             width: 100,
@@ -87,8 +102,6 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
               value: controller.value,
             ),
           ),
-
-
         ],
       ),
     );
