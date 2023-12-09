@@ -10,4 +10,8 @@ class AllText{
   static const String romer= "Romer";
   static const String reaumur= "Reaumur";
   static const String delisle= "delisle";
+  static const String yesCap= "YES";
+  static const String noCap= "NO";
+  static const String exitApp = "Exit App";
+  static const String exitAppSub = "Are you sure you want to exit app ?";
 }

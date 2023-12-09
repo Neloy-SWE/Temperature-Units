@@ -1,3 +1,5 @@
 # temperature Units
 
-A new Flutter project.
+This is a simple pet project developed by Flutter framework.
+
+
